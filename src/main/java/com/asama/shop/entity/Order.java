@@ -1,12 +1,15 @@
 package com.asama.shop.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,7 +24,11 @@ public class Order {
     private Integer id;
     
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
+    
+    @OneToMany(mappedBy = "order",fetch = FetchType.EAGER)
+    List<OrderDetail> orderDetails;
 
     @Column(name = "address", columnDefinition = "NVARCHAR(255)")
     private String address;
@@ -32,8 +39,18 @@ public class Order {
 
     private Double amount;
 
-    @Column(name = "address", columnDefinition = "NVARCHAR(255)")
+    @Column(name = "description", columnDefinition = "NVARCHAR(255)")
     private String description;
+
+    
+    
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
 
     public Integer getId() {
         return id;

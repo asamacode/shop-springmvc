@@ -1,0 +1,59 @@
+
+
+  header {
+    position: relative;
+  }
+  .slide {
+    margin-top: 10px;
+  }
+
+.footer
+{
+    height: 50px;
+    background-color: black;
+    width: 100%;
+    color: cornsilk;
+}
+.carousel-item img {
+  width:100%
+}
+
+  .shopping-mall {
+      position: relative;
+      top: 30px;
+      font-variant: small-caps;
+      bottom: 0px;
+      margin: 10px;
+  }
+
+  .shopping-mall > h1 {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 35px;
+      letter-spacing: 0.4px;
+      text-shadow: 0 0 2px black;
+      padding-bottom: 0px;
+      border-bottom: blueviolet dotted 1px;
+      color: white;
+  }
+
+  .shopping-mall > h4 {
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+  } 
+
+  .product {
+    text-align: center;
+  }
+
+  .card {
+    margin: 5px;
+  }
+
+  .product img {
+    height: 200px !important;
+    max-width: 90%;
+  }
+
+  .price {
+    color: red !important;
+  }

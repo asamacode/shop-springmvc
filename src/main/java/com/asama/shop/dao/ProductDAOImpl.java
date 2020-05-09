@@ -7,11 +7,13 @@ import javax.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.asama.shop.entity.Product;
 
 @Transactional
+@Repository
 public class ProductDAOImpl implements ProductDAO{
 
     @Autowired
@@ -54,6 +56,16 @@ public class ProductDAOImpl implements ProductDAO{
         Product Product = session.find(Product.class, id);
         session.delete(Product);
         return Product;
+    }
+
+    @Override
+    public List<Product> findAllByCategoryId(Integer id) {
+        String hql = "FROM Product WHERE category_id = :id";
+        Session session = factory.getCurrentSession();
+        TypedQuery<Product> query = session.createQuery(hql, Product.class);
+        query.setParameter("id", id);
+        List<Product> products = query.getResultList();
+        return products;
     }
 
 }

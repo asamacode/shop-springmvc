@@ -15,4 +15,6 @@ public interface ProductDAO {
     void update(Product Product);
 
     Product delete(Integer id);
+
+    List<Product> findAllByCategoryId(Integer id);
 }

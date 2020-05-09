@@ -41,6 +41,7 @@ public class HibernateConfig {
         Properties properties = factoryBean.getHibernateProperties();
         properties.put("hibernate.dialect", env.getProperty("hb.dialect"));
         properties.put("hibernate.show_sql", env.getProperty("hb.show-sql"));
+        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hb.ddl-auto"));
         properties.put("current_session_context_class", env.getProperty("hb.session"));
         factoryBean.afterPropertiesSet();
         SessionFactory sessionFactory = factoryBean.getObject();

@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,6 +27,7 @@ public class Product {
     @Column(name = "name", columnDefinition = "NVARCHAR(255)")
     private String name;
 
+    @Column(name = "price", columnDefinition = "DECIMAL")
     private Double price;
 
     private String image;
@@ -37,11 +39,12 @@ public class Product {
     private Boolean available;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     private Integer quantity;
 
-    @Column(name = "description", columnDefinition = "NVARCHAR(255)")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     private Double discount;

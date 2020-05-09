@@ -7,11 +7,13 @@ import javax.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.asama.shop.entity.Order;
 
 @Transactional
+@Repository
 public class OrderDAOImpl implements OrderDAO{
 
     @Autowired
