@@ -16,14 +16,14 @@
 						</a>
 						<div class="caption">
 							<p>${product.name}</p>
-							<div class="pull-right">
+							<div class="pull-right" data-id="${product.id}">
 							<button class="btn btn-primary">
-								<i class="fa fa-cart-plus" aria-hidden="true"></i>
+								<i class="fa fa-cart-plus btn-add-to-cart" aria-hidden="true"></i>
 							</button>
-							<button class="btn btn-success">
+							<button class="btn btn-success btn-star">
 								<i class="fa fa-star" aria-hidden="true"></i>
 							</button>
-							<button class="btn btn-info">
+							<button class="btn btn-info btn-open-dialog" data-toggle="modal" data-target="#exampleModal">
 								<i class="fa fa-envelope" aria-hidden="true"></i>
 							</button>
 						</div>
@@ -33,6 +33,9 @@
 				</div>
 			</div>
 		</c:forEach>
+		
+		<jsp:include page="dialog.jsp"></jsp:include>
+		
 	</div>
 </div>
 <!-- End product list -->

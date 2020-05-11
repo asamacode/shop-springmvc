@@ -14,15 +14,15 @@ import com.asama.shop.entity.Product;
 
 @Transactional
 @Repository
-public class ProductDAOImpl implements ProductDAO{
+public class ProductDAOImpl implements ProductDAO {
 
     @Autowired
     SessionFactory factory;
-    
+
     @Override
     public Product findById(Integer id) {
         Session session = factory.getCurrentSession();
-        
+
         Product Product = session.find(Product.class, id);
         return Product;
     }
@@ -31,7 +31,7 @@ public class ProductDAOImpl implements ProductDAO{
     public List<Product> findAll() {
         String hql = "FROM Product";
         Session session = factory.getCurrentSession();
-        
+
         TypedQuery<Product> query = session.createQuery(hql, Product.class);
         List<Product> categories = query.getResultList();
         return categories;
@@ -64,6 +64,48 @@ public class ProductDAOImpl implements ProductDAO{
         Session session = factory.getCurrentSession();
         TypedQuery<Product> query = session.createQuery(hql, Product.class);
         query.setParameter("id", id);
+        List<Product> products = query.getResultList();
+        return products;
+    }
+
+    @Override
+    public List<Product> findByIds(String ids) {
+        String hql = "FROM Product p WHERE p.id IN (" + ids + ")";
+        Session session = factory.getCurrentSession();
+
+        TypedQuery<Product> query = session.createQuery(hql, Product.class);
+
+        List<Product> products = query.getResultList();
+
+        return products;
+    }
+
+    @Override
+    public List<Product> findBySpecial(Integer id) {
+        Session session = factory.getCurrentSession();
+        String hql = "FROM Product p";
+        TypedQuery<Product> query = session.createQuery(hql, Product.class);
+
+        switch (id) {
+        case 0:
+            // new
+            hql = "FROM Product p ORDER BY p.productDate DESC";
+            break;
+        case 1:
+            // hot sale
+            hql = "FROM Product p ORDER BY size(p.orderDetails) DESC";
+            break;
+        case 2:
+            // most viewed
+            hql = "FROM Product p ORDER BY p.viewCount DESC";
+            break;
+        case 3:
+            // discount
+            hql = "FROM Product p ORDER BY p.discount DESC";
+            break;
+        }
+        query = session.createQuery(hql, Product.class);
+        query.setMaxResults(12);
         List<Product> products = query.getResultList();
         return products;
     }

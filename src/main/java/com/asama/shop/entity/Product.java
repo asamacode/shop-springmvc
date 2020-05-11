@@ -1,6 +1,7 @@
 package com.asama.shop.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,7 +30,7 @@ public class Product {
     private String name;
 
     @Column(name = "price", columnDefinition = "DECIMAL")
-    private Double price;
+    private Float price;
 
     private String image;
 
@@ -41,13 +43,16 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private Category category;
+    
+    @OneToMany(mappedBy = "product")
+    private List<OrderDetail> orderDetails;
 
     private Integer quantity;
 
-    @Column(name = "description", columnDefinition = "TEXT")
+    @Column(name = "description", columnDefinition = "NVARCHAR(MAX)")
     private String description;
 
-    private Double discount;
+    private Float discount;
 
     private Integer viewCount;
 
@@ -69,11 +74,11 @@ public class Product {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -125,11 +130,11 @@ public class Product {
         this.description = description;
     }
 
-    public Double getDiscount() {
+    public Float getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Double discount) {
+    public void setDiscount(Float discount) {
         this.discount = discount;
     }
 

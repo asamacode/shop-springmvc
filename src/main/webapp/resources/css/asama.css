@@ -50,10 +50,40 @@
   }
 
   .product img {
-    height: 200px !important;
+    max-height: 220px !important;
     max-width: 90%;
   }
 
   .price {
     color: red !important;
+  }
+  
+  .detail-img {
+  	max-width: 100%;
+  	max-height: 250px;
+  }
+  
+  .detail-info li {
+  	font-variant: small-caps;
+  	font-size: larger;
+  	line-height: 30px;
+  }
+  
+  p {
+  	text-align: justify;
+  }
+  
+  .thumb-img {
+  	width: 100%;
+  	max-width: 135px;
+  	max-height: 180px;
+  	height: 100%;
+  	border-radius: 5px;
+  	margin: 8px;
+  	padding: 3px;
+  	box-shadow: 0px 0px 2px blue;
+  }
+  
+  .thumb-img:hover {
+  	box-shadow: 0px 0px 5px red;
   }
