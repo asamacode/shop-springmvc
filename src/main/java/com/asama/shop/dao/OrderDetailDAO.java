@@ -6,13 +6,15 @@ import com.asama.shop.entity.OrderDetail;
 
 public interface OrderDetailDAO {
 
- OrderDetail findById(Integer id);
-    
+    OrderDetail findById(Integer id);
+
     List<OrderDetail> findAll();
-    
+
     OrderDetail create(OrderDetail OrderDetail);
-    
+
     void update(OrderDetail OrderDetail);
-    
+
     OrderDetail delete(Integer id);
+
+    List<OrderDetail> findByOrderId(Integer id);
 }

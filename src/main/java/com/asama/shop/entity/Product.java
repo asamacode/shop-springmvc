@@ -30,7 +30,7 @@ public class Product {
     private String name;
 
     @Column(name = "price", columnDefinition = "DECIMAL")
-    private Float price;
+    private Double price;
 
     private String image;
 
@@ -52,7 +52,7 @@ public class Product {
     @Column(name = "description", columnDefinition = "NVARCHAR(MAX)")
     private String description;
 
-    private Float discount;
+    private Double discount;
 
     private Integer viewCount;
 
@@ -74,11 +74,11 @@ public class Product {
         this.name = name;
     }
 
-    public Float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -130,11 +130,11 @@ public class Product {
         this.description = description;
     }
 
-    public Float getDiscount() {
+    public Double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Float discount) {
+    public void setDiscount(Double discount) {
         this.discount = discount;
     }
 

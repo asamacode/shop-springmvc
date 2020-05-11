@@ -58,4 +58,15 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
         return OrderDetail;
     }
 
+    @Override
+    public List<OrderDetail> findByOrderId(Integer id) {
+        String hql = "FROM OrderDetail d WHERE d.order.id = :oid";
+        Session session = factory.getCurrentSession();
+        
+        TypedQuery<OrderDetail> query = session.createQuery(hql, OrderDetail.class);
+        query.setParameter("oid", id);
+        List<OrderDetail> categories = query.getResultList();
+        return categories;
+    }
+
 }

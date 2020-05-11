@@ -1,11 +1,11 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Navigation -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 	<div class="container">
-		<a class="navbar-brand" href="#">
-			<h4>A SaMa Shop</h4>
+		<a class="navbar-brand" href="/home/index">
+			<h5>A SaMa Shop</h5>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -25,16 +25,26 @@
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Account </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/account/login">Đăng nhập</a> 
-						<a class="dropdown-item" href="/account/register">Đăng ký</a>
-						<a class="dropdown-item" href="#">Quên mật khẩu</a>
-						<a class="dropdown-item" href="#">Đổi mật khẩu</a>
-						<a class="dropdown-item" href="#">Cập nhật tài khoản</a>
-						<a class="dropdown-item" href="#">Đơn hàng</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="/account/logout">Đăng xuất</a>
-					</div></li>
+					<c:choose>
+						<c:when test="${empty sessionScope.user}">
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/account/login">Đăng nhập</a> 
+							<a class="dropdown-item" href="/account/register">Đăng ký</a>
+							<a class="dropdown-item" href="/account/forget">Quên mật khẩu</a>
+						</div>
+						</c:when>
+						<c:otherwise>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="/account/change">Đổi mật khẩu</a>
+								<a class="dropdown-item" href="/account/edit">Cập nhật tài khoản</a> 
+								<a class="dropdown-item" href="/order/list">Đơn hàng</a>
+								<a class="dropdown-item" href="/order/items">Hàng đã mua</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="/account/logout">Đăng xuất</a>
+							</div>
+						</c:otherwise>
+					</c:choose>	
+					</li>
 			</ul>
 
 			<ul class="navbar-nav navbar-right">

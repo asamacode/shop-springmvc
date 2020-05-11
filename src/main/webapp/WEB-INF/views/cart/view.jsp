@@ -38,4 +38,4 @@
 
 <button class="btn btn-sm btn-danger btn-cart-clear">Clear</button>
 <button class="btn btn-sm btn-info">Continue</button>
-<button class="btn btn-sm btn-success">Check out</button>
+<a class="btn btn-sm btn-success" href="/order/checkout">Check out</a>

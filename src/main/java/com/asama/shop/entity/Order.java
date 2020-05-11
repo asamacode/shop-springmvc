@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,13 +23,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Order {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    
-    @OneToMany(mappedBy = "order",fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     List<OrderDetail> orderDetails;
 
     @Column(name = "address", columnDefinition = "NVARCHAR(255)")
@@ -42,8 +45,14 @@ public class Order {
     @Column(name = "description", columnDefinition = "NVARCHAR(255)")
     private String description;
 
-    
-    
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     public List<OrderDetail> getOrderDetails() {
         return orderDetails;
     }
