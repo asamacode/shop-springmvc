@@ -26,14 +26,14 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Account </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Đăng nhập</a> 
-						<a class="dropdown-item" href="#">Đăng ký</a>
+						<a class="dropdown-item" href="/account/login">Đăng nhập</a> 
+						<a class="dropdown-item" href="/account/register">Đăng ký</a>
 						<a class="dropdown-item" href="#">Quên mật khẩu</a>
 						<a class="dropdown-item" href="#">Đổi mật khẩu</a>
 						<a class="dropdown-item" href="#">Cập nhật tài khoản</a>
 						<a class="dropdown-item" href="#">Đơn hàng</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Đăng xuất</a>
+						<a class="dropdown-item" href="/account/logout">Đăng xuất</a>
 					</div></li>
 			</ul>
 
