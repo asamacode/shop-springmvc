@@ -17,10 +17,29 @@
 				<li class="nav-item active"><a class="nav-link"
 					href="/home/index">Home <span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="/admin/manage">Quản lý</a></li>
-				<li class="nav-item"><a class="nav-link" href="/admin/analize">Thống kê</a>
+					 <li class="nav-item dropdown">
+					    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Quản lý</a>
+						    <div class="dropdown-menu">
+						      <a class="dropdown-item" href="/admin/category/index">Loại</a>
+						      <a class="dropdown-item" href="/admin/product/index">Sản phẩm</a>
+						      <a class="dropdown-item" href="/admin/customer/index">Khách hàng</a>
+						      <a class="dropdown-item" href="/admin/order/index">Đơn hàng</a>					      
+						    </div>
+					</li>
+				 <li class="nav-item dropdown">
+					    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Thống kê</a>
+						    <div class="dropdown-menu">
+						      <a class="dropdown-item" href="/admin/inventory/index">Tồn kho theo loại</a>
+						      <a class="dropdown-item" href="/admin/revenue/index">Doanh số theo loại</a>
+						      <a class="dropdown-item" href="/admin/revenue/customer">Doanh số theo khách hàng</a>
+						      <a class="dropdown-item" href="/admin/revenue/year">Doanh số theo năm</a>
+						      <a class="dropdown-item" href="/admin/revenue/quarter">Doanh số theo quý</a>
+						      <a class="dropdown-item" href="/admin/revenue/month">Doanh số theo tháng</a>					      
+						    </div>
+					</li>
+				<li class="nav-item"><a class="nav-link" href="#">Tài khoản</a>
+					
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/admin/account">Tài khoản</a></li>
 			</ul>
 		</div>
 	</div>

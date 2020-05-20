@@ -43,7 +43,11 @@ public class ProductController {
     public String detail(Model model, @PathVariable("id") Integer id) {
         Product product = productDAO.findById(id);
         // increase product view count
-        product.setViewCount(product.getViewCount() + 1);
+        if (product.getViewCount() == null) {
+            product.setViewCount(1);
+        } else {
+            product.setViewCount(product.getViewCount() + 1);
+        }
         productDAO.update(product);
         // load and add favorite product
         List<Product> products = productDAO.findAllByCategoryId(product.getCategory().getId());

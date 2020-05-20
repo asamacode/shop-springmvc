@@ -15,4 +15,8 @@ public interface CustomerDAO {
     void update(Customer Customer);
 
     Customer delete(String id);
+
+    long getPageCount(int pageSize);
+
+    List<Customer> getPage(int pageNum, int pageSize);
 }

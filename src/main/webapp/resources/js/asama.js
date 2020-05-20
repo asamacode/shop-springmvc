@@ -1,4 +1,17 @@
 $(document).ready(function() {
+	
+	$("a[data-lang]").click(function() {
+		var lang = $(this).attr("data-lang");
+		
+		$.ajax({
+			url: "/home/language?lang="+lang,
+			success: function() {
+				location.reload();
+			}
+		});
+		
+	});
+	
 	$("tr[data-id] input").on("input", function() {
 		var id = $(this).closest("tr").attr("data-id");
 		var price = $(this).closest("tr").attr("data-price");

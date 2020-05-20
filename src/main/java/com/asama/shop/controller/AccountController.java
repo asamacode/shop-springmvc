@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -179,9 +181,21 @@ public class AccountController {
     }
 
     @PostMapping("/account/register")
-    public String register(Model model, @ModelAttribute("form") Customer user,
+    public String register(Model model,@Validated @ModelAttribute("form") Customer user,
+            BindingResult errors,
             @RequestParam("photo_file") MultipartFile file)
             throws IllegalStateException, IOException, MessagingException {
+        if (errors.hasErrors()) {
+            model.addAttribute("message", "Please fix some following errors !");
+            return "account/register";
+        } else {
+            Customer user2 = customerDAO.findById(user.getId());
+            if (user2 != null) {
+                model.addAttribute("message", "Username is in used !");
+                return "account/register";  
+            }
+        }
+        
         // upload file image
         if (file.isEmpty()) {
             user.setPhoto("user.png");

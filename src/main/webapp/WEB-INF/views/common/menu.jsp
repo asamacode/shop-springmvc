@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <!-- Navigation -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 	<div class="container">
@@ -14,8 +15,9 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="/home/index">Home <span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link" href="/home/index">
+						<s:message code="lyt.menu.home" />
+					 <span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="/home/about">About</a></li>
 				<li class="nav-item"><a class="nav-link" href="/home/services">Services</a>
@@ -48,9 +50,8 @@
 			</ul>
 
 			<ul class="navbar-nav navbar-right">
-				<li class="nav-item"><a class="nav-link" href="#">Tiếng
-						Việt</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">English</a></li>
+				<li class="nav-item"><a class="nav-link" href="#" data-lang="vi">Tiếng Việt</a></li>
+				<li class="nav-item"><a class="nav-link" href="#" data-lang="en">English</a></li>
 			</ul>
 		</div>
 	</div>

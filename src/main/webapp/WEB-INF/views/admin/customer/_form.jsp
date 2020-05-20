@@ -59,7 +59,7 @@
 		
 		<div class="form-group col-sm-12">
 			<label>Photo: </label> 
-			<img src="/resources/images/customers/${entity.photo}" style="width: 80px;height: 90px" />
+			<img src="/resources/images/customers/${(entity.photo==null)?'/user.png':entity.photo}" style="width: 80px;height: 90px" />
 			<input name="photo_file" type="file" class="form-control" />
 			<form:hidden path="photo" />
 		</div>

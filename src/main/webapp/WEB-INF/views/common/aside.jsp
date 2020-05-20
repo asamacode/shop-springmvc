@@ -2,10 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+
+
 <c:set var="cart" value="${sessionScope['scopedTarget.cartService']}" />
 <div class="card-columns-3">
 	<div class="card">
-		<h4 class="card-header">Giỏ hàng</h4>
+		<h4 class="card-header">
+			<s:message code="lyt.cart.title" />
+		</h4>
 		<div class="card-body">
 			<div class="row">
 				<img id="cart-img" style=" width: 100px;" class="col-sm-5"

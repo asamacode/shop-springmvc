@@ -4,19 +4,28 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "Customers")
 public class Customer {
 
     @Id
+    @NotEmpty
     private String id;
 
+    @Length(min = 6)
     private String password;
 
     @Column(name = "full_name", columnDefinition = "NVARCHAR(255)")
+    @NotEmpty
     private String fullName;
 
+    @NotEmpty
+    @Email
     private String email;
 
     private String photo;
