@@ -6,7 +6,7 @@
 
 	<div class="row">
 		<div class="col-sm-5 text-center">
-			<img class="detail-img" src="${product.image}" />
+			<img class="detail-img" src="/resources/images/products/${product.image}" />
 		</div>
 		<div class="col-sm-7">
 			<h2>${product.name}</h2>
@@ -47,7 +47,7 @@
 			<c:forEach var="p" items="${listProduct}">
 			<div class="col-xs-3">
 				<a href="/product/detail/${p.id}"> <img class="thumb-img"
-					src="${p.image}" />
+					src="/resources/images/products/${p.image}" />
 				</a>
 			</div>
 		</c:forEach>
@@ -58,7 +58,7 @@
 			<c:forEach var="p" items="${listFav}">
 			<div class="col-xs-3">
 				<a href="/product/detail/${p.id}"> <img class="thumb-img"
-					src="${p.image}" />
+					src="/resources/images/products/${p.image}" />
 				</a>
 			</div>
 		</c:forEach>
@@ -69,7 +69,7 @@
 			<c:forEach var="p" items="${listViewed}">
 			<div class="col-xs-3">
 				<a href="/product/detail/${p.id}"> <img class="thumb-img"
-					src="${p.image}" />
+					src="/resources/images/products/${p.image}" />
 				</a>
 			</div>
 		</c:forEach>

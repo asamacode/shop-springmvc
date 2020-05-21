@@ -56,3 +56,19 @@
 		</div>
 	</div>
 </nav>
+<script>
+    	$(function(){
+    		$("a[data-lang]").click(function() {
+    			var lang = $(this).attr("data-lang");
+    			
+    			$.ajax({
+    				url: "/home/language?lang="+lang,
+    				success: function() {
+    					location.reload();
+    				}
+    			});
+    			return false;
+    			
+    		});
+    	});
+</script>

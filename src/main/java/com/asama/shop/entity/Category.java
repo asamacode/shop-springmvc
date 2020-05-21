@@ -1,10 +1,13 @@
 package com.asama.shop.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,17 @@ public class Category {
 
     @Column(name = "name_vn", columnDefinition = "NVARCHAR(255)")
     private String nameVN;
+    
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
+    
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 
     public Integer getId() {
         return id;

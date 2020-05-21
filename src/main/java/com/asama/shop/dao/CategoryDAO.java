@@ -15,4 +15,6 @@ public interface CategoryDAO {
     void update(Category category);
     
     Category delete(Integer id);
+
+    List<Category> getRandoms();
 }

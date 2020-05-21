@@ -1,5 +1,6 @@
 package com.asama.shop.dao;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.asama.shop.entity.Category;
+import com.asama.shop.entity.Product;
 
 @Transactional
 @Repository
@@ -56,6 +58,24 @@ public class CategoryDAOImpl implements CategoryDAO{
         Category category = session.find(Category.class, id);
         session.delete(category);
         return category;
+    }
+
+    @Override
+    public List<Category> getRandoms() {
+        String hql = "FROM Category c WHERE SIZE(c.products) >= 4";
+        Session session = factory.getCurrentSession();
+        
+        TypedQuery<Category> query = session.createQuery(hql, Category.class);
+        List<Category> categories = query.getResultList();
+        Collections.shuffle(categories);
+        categories = categories.subList(0, 4);
+        categories.forEach(cat -> {
+            List<Product> products = cat.getProducts();
+            Collections.shuffle(products);
+            products = products.subList(0, 4);
+            cat.setProducts(products);
+        });
+        return categories;
     }
 
 }

@@ -3,7 +3,7 @@
 <div class="card col-sm-12 div-wrapper d-flex justify-content-center align-items-center">
 	<div class="col-sm-4">
 	<h2>Login</h2>
-<h4>${message}</h4>
+<h4>${message}${param.message}</h4>
 	<form action="/account/login" method="post">
 <div class="form-group">
 	<label>Username: </label>

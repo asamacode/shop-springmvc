@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/slideshow/css/style.css' />" />
+		<script src="<c:url value='/slideshow/js/modernizr.custom.63321.js' /> "></script>
+		<script src="<c:url value='/slideshow/js/jquery.catslider.js' /> "></script>
 <div class="list-product">
 
 	<div id="carouselId" class="carousel slide" data-ride="carousel">
@@ -33,80 +38,31 @@
 		</a>
 	</div>
 	<div class="card">
-		<div class="card-header">
-			<h5>Danh sách sản phẩm</h5>
-		</div>
 		<!-- Product list -->
-		<div class="row">
-			<div class="col-sm-4 product">
-				<div class="card">
-					<div class="card-header">
-						<p>Nokia</p>
-					</div>
-					<div class="card-body">
-						<img class="col-sm-12"
-							src="https://images-na.ssl-images-amazon.com/images/I/61js2gOD2iL._AC_SX569_.jpg" />
-					</div>
-					<div class="card-footer">$100</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<p>Nokia</p>
-					</div>
-					<div class="card-body">
-						<img class="col-sm-12"
-							src="https://images-na.ssl-images-amazon.com/images/I/61js2gOD2iL._AC_SX569_.jpg" />
-					</div>
-					<div class="card-footer">$100</div>
-				</div>
-			</div>
-
-			<div class="col-sm-4 product">
-				<div class="card">
-					<div class="card-header">
-						<p>Nokia</p>
-					</div>
-					<div class="card-body">
-						<img class="col-sm-12"
-							src="https://images-na.ssl-images-amazon.com/images/I/61js2gOD2iL._AC_SX569_.jpg" />
-					</div>
-					<div class="card-footer">$100</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<p>Nokia</p>
-					</div>
-					<div class="card-body">
-						<img class="col-sm-12"
-							src="https://images-na.ssl-images-amazon.com/images/I/61js2gOD2iL._AC_SX569_.jpg" />
-					</div>
-					<div class="card-footer">$100</div>
-				</div>
-			</div>
-
-			<div class="col-sm-4 product">
-				<div class="card">
-					<div class="card-header">
-						<p>Nokia</p>
-					</div>
-					<div class="card-body">
-						<img class="col-sm-12"
-							src="https://images-na.ssl-images-amazon.com/images/I/61js2gOD2iL._AC_SX569_.jpg" />
-					</div>
-					<div class="card-footer">$100</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<p>Nokia</p>
-					</div>
-					<div class="card-body">
-						<img class="col-sm-12"
-							src="https://images-na.ssl-images-amazon.com/images/I/61js2gOD2iL._AC_SX569_.jpg" />
-					</div>
-					<div class="card-footer">$100</div>
-				</div>
-			</div>
+		<div id="mi-slider" class="mi-slider">
+			<c:forEach var="c" items="${rands}">
+					<ul>
+						<c:forEach var="p" items="${c.products}">
+						<li><a href="/product/detail/${p.id}"><img src="/resources/images/products/${p.image}" alt="img01"><h4>${p.name}</h4></a></li>
+						</c:forEach>
+					</ul>
+			</c:forEach>
+			
+			<nav>
+				<c:forEach var="c" items="${rands}">
+				<a href="#">${c.nameVN}</a>
+				</c:forEach>
+			</nav>
 		</div>
+			
 	</div>
 	<!-- End product list -->
+	<jsp:include page="../product/list.jsp" />
 </div>
+<script>
+			$(function() {
+
+				$( '#mi-slider' ).catslider();
+
+			});
+</script>

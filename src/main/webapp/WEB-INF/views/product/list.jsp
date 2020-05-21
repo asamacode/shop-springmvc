@@ -10,9 +10,9 @@
 		<c:forEach var="product" items="${listProduct}">
 			<div class="col-sm-4 product">
 				<div class="card">
-					<div class="thumbnail">
+					<div class="thumbnail pro-icon-wrapper">
 						<a href="/product/detail/${product.id}">
-						<img class="col-sm-12" src="${product.image}" />
+						<img class="col-sm-12" src="/resources/images/products/${product.image}" />
 						</a>
 						<div class="caption">
 							<p>${product.name}</p>
@@ -29,6 +29,17 @@
 						</div>
 							<p><span class="price">${product.price}</span></p>
 						</div>
+						<c:choose>
+							<c:when test="${product.special}">
+								<img class="pro-icon" src="/resources/images/special.png" />
+							</c:when>
+							<c:when test="${product.discount > 0}">
+								<img class="pro-icon" src="/resources/images/discount.png" />
+							</c:when>
+							<c:when test="${product.available}">
+								<img class="pro-icon" src="/resources/images/new.png" />
+							</c:when>
+						</c:choose>
 					</div>
 				</div>
 			</div>

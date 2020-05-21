@@ -103,6 +103,10 @@ public class ProductDAOImpl implements ProductDAO {
             // discount
             hql = "FROM Product p ORDER BY p.discount DESC";
             break;
+        case 4:
+            // discount
+            hql = "FROM Product p WHERE p.special=true";
+            break;
         }
         query = session.createQuery(hql, Product.class);
         query.setMaxResults(12);

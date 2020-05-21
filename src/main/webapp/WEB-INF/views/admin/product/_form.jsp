@@ -41,7 +41,7 @@
 				<div class="form-group">
 					<div class="form-group">
 					<label>Discount: </label> 
-					<form:input path="discount" type="number" class="form-control" />
+					<form:input path="discount" class="form-control" />
 				</div>
 				</div>
 			</div>

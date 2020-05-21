@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.asama.shop.interceptor.AuthenticateInterceptor;
 import com.asama.shop.interceptor.AuthorizeInterceptor;
 import com.asama.shop.interceptor.ShareInterceptor;
 
@@ -15,13 +16,18 @@ public class InterceptorConfig implements WebMvcConfigurer{
     ShareInterceptor shareInterceptor;
     
     @Autowired
+    AuthenticateInterceptor authenInterceptor;
+    
+    @Autowired
     AuthorizeInterceptor authorizeInterceptor;
     
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(shareInterceptor)
         .addPathPatterns("/**");
-        registry.addInterceptor(authorizeInterceptor)
+        registry.addInterceptor(authenInterceptor)
         .addPathPatterns("/account/change", "/account/logout", "/account/edit", "/order/**");
+        registry.addInterceptor(authorizeInterceptor)
+        .addPathPatterns("/admin/**");
     }
 }

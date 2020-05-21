@@ -87,3 +87,15 @@
   .thumb-img:hover {
   	box-shadow: 0px 0px 5px red;
   }
+  
+  .pro-icon-wrapper {
+  	position: relative;
+  }
+  
+  .pro-icon {
+  	height: 50px;
+  	width: 50px;
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  }
